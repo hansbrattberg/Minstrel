@@ -16,17 +16,17 @@ from modules.suggestion import gen_suggestion
 from modules.workflow import gen_workflow
 
 module_name_dict = {
-    "background": "背景",
-    "command": "命令",
-    "suggesstion": "建议",
-    "goal": "目标",
-    "examples": "任务样例",
-    "constraints": "约束",
-    "workflow": "工作流程",
-    "output_format": "输出格式",
-    "skills": "技能",
-    "style": "风格",
-    "initialization": "初始化"
+    "background": "Background",
+    "command": "Command",
+    "suggesstion": "Suggestion",
+    "goal": "Goal",
+    "examples": "Task Examples",
+    "constraints": "Constraints",
+    "workflow": "Workflow",
+    "output_format": "Output Format",
+    "skills": "Skills",
+    "style": "Style",
+    "initialization": "Initialization"
 }
 
 module_func_dict = {
@@ -49,22 +49,22 @@ def generate():
     ## A text input for the user to input the basic description of the task
     col1, col2 = st.columns([8, 2])
     with col1:
-        task = st.text_input("任务描述","撰写科幻小说",label_visibility="collapsed")
+        task = st.text_input("Task Description", "Write a sci-fi novel", label_visibility="collapsed")
         pass
     ## A button to analyze the task and generate the modules
     with col2:
-        if st.button("分析任务",type="primary"):
+        if st.button("Analyze Task", type="primary"):
             ## Get the modules
-            state.module_messages = [{"role": "user", "content": f"我希望LLM帮我执行的任务是：{task}"}]
+            state.module_messages = [{"role": "user", "content": f"The task I want LLM to help me with is: {task}"}]
             state.modules = get_modules(state.generator, state.module_messages)
             pass
     with st.sidebar:
-        st.subheader("基本信息")
-        state.role_name = st.text_input("助手名称","",help="例如：大模型、助手等")
-        state.author = st.text_input("作者","LangGPT")
-        state.version = st.number_input("版本",min_value=0.1,value=0.1,step=0.1)
-        state.description = st.text_area("描述","这是一个LangGPT生成的助手",height=100)
-        st.subheader("模块控制")
+        st.subheader("Basic Information")
+        state.role_name = st.text_input("Assistant Name", "", help="e.g., AI Model, Assistant, etc.")
+        state.author = st.text_input("Author", "LangGPT")
+        state.version = st.number_input("Version", min_value=0.1, value=0.1, step=0.1)
+        state.description = st.text_area("Description", "This is a LangGPT generated assistant", height=100)
+        st.subheader("Module Control")
         if "modules" not in state:
             state.modules = {
                 "background": False,
@@ -91,13 +91,13 @@ def generate():
         pass
     if "modules" in state:
         if state.on_modules["examples"]:
-            st.subheader("请提供任务样例：")
+            st.subheader("Please provide task examples:")
             input_area, output_area = st.columns(2)
             with input_area:
-                input_example = st.text_area("样例输入","")
+                input_example = st.text_area("Example Input", "")
                 pass
             with output_area:
-                output_example = st.text_area("样例输出","")
+                output_example = st.text_area("Example Output", "")
                 pass
             state.examples = {
                 "input": input_example,
@@ -105,8 +105,8 @@ def generate():
             }
             pass
         if state.on_modules["style"]:
-            st.subheader("请指定回复的风格：")
-            style = st.text_input("风格","",help="例如：正式、幽默、严肃等",label_visibility="collapsed")
+            st.subheader("Please specify response style:")
+            style = st.text_input("Style", "", help="e.g., Formal, Humorous, Serious, etc.", label_visibility="collapsed")
             state.style = style
             pass
         ## A button to control the generation of the modules
@@ -114,15 +114,15 @@ def generate():
             if key in state:
                 if state.on_modules[key]:
                     with st.expander(module_name_dict[key]):
-                        st.text_area(module_name_dict[key],state[key],label_visibility="collapsed")
+                        st.text_area(module_name_dict[key], state[key], label_visibility="collapsed")
                         pass
             pass
         g,c = st.columns([1,1])
         with g:
-            generate_button = st.button("生成模块")
+            generate_button = st.button("Generate Modules")
             pass
         with c:
-            compose_button = st.button("合成提示")
+            compose_button = st.button("Compose Prompt")
             pass
         if generate_button:
             for key in state.modules.keys():
@@ -157,15 +157,15 @@ def generate():
             for key in state.modules.keys():
                 if state.on_modules[key]:
                     if key not in state:
-                        st.error(f"请先生成{module_name_dict[key]}")
+                        st.error(f"Please generate {module_name_dict[key]} first")
                         return
                     else:
                         if key == "examples":
                             state.prompt += f"## {module_name_dict[key]}\n"
-                            state.prompt += f"### 输入\n"
+                            state.prompt += f"### Input\n"
                             state.prompt += state.examples["input"]
                             state.prompt += "\n"
-                            state.prompt += f"### 输出\n"
+                            state.prompt += f"### Output\n"
                             state.prompt += state.examples["output"]
                             state.prompt += "\n\n"
                         state.prompt += f"## {key}\n"
