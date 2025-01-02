@@ -1,60 +1,60 @@
 # Minstrel
 
-Minstrel 是一个多智能体系统，用于生成基于LangGPT格式的结构化提示。该项目旨在通过多个智能代理协作生成高质量的LangGPT提示，以提高生成文本的准确性和多样性。
+Minstrel is a multi-agent system for generating structured prompts in the LangGPT format. The project aims to improve the accuracy and diversity of generated text through collaboration between multiple intelligent agents to produce high-quality LangGPT prompts.
 
 ## News
-- Minstrel正在参与书生大模型训练营第4期
-  ![Minstrel正在参加书生大模型训练营第4期](https://github.com/user-attachments/assets/5a32bd82-e2fd-4bdb-81ea-d5ff9fb648dd)
+- Minstrel is participating in the 4th Shusheng Large Model Training Camp
+  ![Minstrel participating in the 4th Shusheng Large Model Training Camp](https://github.com/user-attachments/assets/5a32bd82-e2fd-4bdb-81ea-d5ff9fb648dd)
 
-## 功能特性
+## Features
 
-- 多代理协作生成LangGPT提示
-- 高效的提示生成算法
-- 易于扩展和定制
+- Multi-agent collaboration for LangGPT prompt generation
+- Efficient prompt generation algorithms
+- Easy to extend and customize
 
-## 安装
+## Installation
 
-请按照以下步骤安装和运行该项目：
+Please follow these steps to install and run the project:
 
-1. 克隆项目仓库：
+1. Clone the repository:
     ```bash
     git clone https://github.com/sci-m-wang/Minstrel.git
     cd Minstrel
     ```
 
-2. 创建并激活虚拟环境（可选但推荐）：
+2. Create and activate a virtual environment (optional but recommended):
     ```bash
     conda create -n langgpt python=3.10 -y
     conda activate langgpt
     ```
 
-3. 安装依赖项：
+3. Install dependencies:
     ```bash
     pip install openai==1.37.1
     pip install streamlit==1.37.0
     ```
 
-## 使用方法
+## Usage
 
-以下是一个简单的使用示例：
+Here's a simple example of how to use it:
 
-1. 运行主脚本以生成LangGPT提示：
+1. Run the main script to generate LangGPT prompts:
     ```bash
     python -m streamlit run app.py
     ```
 
-## 贡献
+## Contributing
 
-欢迎贡献代码！请遵循以下步骤：
+Contributions are welcome! Please follow these steps:
 
-1. Fork 本仓库
-2. 创建一个新的分支 (`git checkout -b feature-branch`)
-3. 提交您的更改 (`git commit -am 'Add new feature'`)
-4. 推送到分支 (`git push origin feature-branch`)
-5. 创建一个新的 Pull Request
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature-branch`)
+5. Create a new Pull Request
 
-## 引用
-如果您在研究中使用了本项目，请引用以下论文：
+## Citation
+If you use this project in your research, please cite the following papers:
 ```
 @misc{wang2024langgptrethinkingstructuredreusable,
       title={LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language}, 
@@ -77,15 +77,15 @@ Minstrel 是一个多智能体系统，用于生成基于LangGPT格式的结构�
 }
 ```
 
-## 联系方式
+## Contact
 
-如果您有任何问题或建议，请通过以下方式联系我们：
+If you have any questions or suggestions, please contact us through:
 
-- 电子邮件: sci.m.wang@gmail.com
+- Email: sci.m.wang@gmail.com
 - GitHub: [sci-m-wang](https://github.com/sci-m-wang)
 
 ## Star History
 
 ![Star History Chart](https://api.star-history.com/svg?repos=sci-m-wang/Minstrel&type=Date)
 
-感谢您使用 Minstrel！
+Thank you for using Minstrel!
